@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    
+    .card {
+        padding: 70px;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-header {
+        background-color: #ffffff;
+        border-bottom: 1px solid #e5e5e5;
+    }
+
+    .card-footer {
+        background-color: #ffffff;
+        border-top: 1px solid #e5e5e5;
+    }
+
+    .btn-outline-primary {
+        color: #007bff;
+        border-color: #007bff;
+        border-radius: 20px;
+        transition: all 0.3s ease;
+    }
+
+    .btn-outline-primary:hover {
+        background-color: #007bff;
+        color: #ffffff;
+    }
+
+    .list-inline-item a {
+        color: #000000;
+        transition: all 0.3s ease;
+    }
+
+    .list-inline-item a:hover {
+        text-decoration: none;
+        color: #007bff;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h1 class="card-title mb-4 text-center fw-bold">Liste des Publications</h1>
+                  
+                    {% for post in object_list %}
+                    <div class="card mb-4">
+                        <div class="card-header d-flex align-items-center">
+                            <img src="{{ post.image.url }}" class="rounded-circle me-2" width="40" height="40" alt="{{ post.User.nom }}">
+                            <span class="fw-bold">{{ post.User.nom }}</span>
+                        </div>
+                        <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.User.nom }}">
+                        <div class="card-body">
+                            <p class="card-text">{{ post.description }}</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-primary">Like</button>
+                                    <button type="button" class="btn btn-sm btn-outline-primary">Comment</button>
+                                    <a href="{% url 'post_detail' model_name='post' pk=post.pk %}" class="btn btn-sm btn-outline-primary">View Post</a>    
+                                </div>
+                                <small class="text-muted">{{ post.date }}</small>
+                            </div>
+                            <ul class="list-inline mt-2">
+                                <li class="list-inline-item"><a href="#" class="text-decoration-none">Likes</a></li>
+                                <li class="list-inline-item"><a href="#" class="text-decoration-none">Comments</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p class="text-center">Aucune publication trouvée.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

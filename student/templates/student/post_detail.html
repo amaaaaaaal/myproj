@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .container {
+        margin-top: 50px;
+    }
+
+    .card {
+        border-radius: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-body {
+        padding: 120px;
+    }
+
+    .card-title {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .detail-item {
+        margin-bottom: 20px;
+    }
+
+    .detail-item strong {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .detail-item span {
+        color: #555;
+    }
+</style>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h1 class="card-title mb-4 text-center">Detail</h1>
+                    <div class="detail-container">
+                        {% if model_name == 'post' %}
+                            <div class="detail-item">
+                                <img src="{{ object.image.url }}" alt="{{ object.title }}" class="img-fluid mb-3">
+                            </div>
+                            
+                            <div class="detail-item">
+                                <strong>Author:</strong> {{ object.User }}
+                            </div>
+                           
+                        {% elif model_name == 'reaction' %}
+                            <div class="detail-item">
+                                <strong>User:</strong> {{ object.user }}
+                            </div>
+                                                      
+                        {% elif model_name == 'recommandation' %}
+                            <div class="detail-item">
+                                <strong>Text:</strong> {{ object.text }}
+                            </div>
+                           
+                        {% elif model_name == 'transport' %}
+                            <div class="detail-item">
+                                <strong>Depart:</strong> {{ object.depart }}
+                            </div>
+                            <div class="detail-item">
+                                <strong>Destination:</strong> {{ object.destination }}
+                            </div>
+                            <div class="detail-item">
+                                <strong>Departure Time:</strong> {{ object.heuredep }}
+                            </div>
+                            <div class="detail-item">
+                                <strong>Number of Seats:</strong> {{ object.nbresieges }}
+                            </div>
+                            <div class="detail-item">
+                                <strong>Contact Information:</strong> {{ object.contactInfo }}
+                            </div>
+                        {% elif model_name == 'logement' %}
+                            <div class="detail-item">
+                                <strong>Description:</strong> {{ object.description }}
+                            </div>
+                            <div class="detail-item">
+                                <strong>Contact Information:</strong> {{ object.contactInfo }}
+                            </div>
+                        {% elif model_name == 'stage' %}
+                            <div class="detail-item">
+                                <strong>Type of Stage:</strong> {{ object.typeStg }}
+                            </div>
+                            <div class="detail-item">
+                                <strong>Company:</strong> {{ object.societe }}
+                            </div>
+                            <div class="detail-item">
+                                <strong>Duration:</strong> {{ object.duree }}
+                            </div>
+                            <div class="detail-item">
+                                <strong>Subject:</strong> {{ object.sujet }}
+                            </div>
+                            <div class="detail-item">
+                                <strong>Specialization:</strong> {{ object.specialite }}
+                            </div>
+                            <div class="detail-item">
+                                <strong>Contact Info:</strong> {{ object.contactInfo }}
+                            </div>
+                        {% elif model_name == 'event' %}
+                            <div class="detail-item">
+                                <strong>Title:</strong> {{ object.intitule }}
+                            </div>
+                            <div class="detail-item">
+                                <strong>Description:</strong> {{ object.description }}
+                            </div>
+                            <div class="detail-item">
+                                <strong>Location:</strong> {{ object.lieu }}
+                            </div>
+                            <div class="detail-item">
+                                <strong>Contact Info:</strong> {{ object.contactInfo }}
+                            </div>
+                        {% elif model_name == 'evenclub' %}
+                            <div class="detail-item">
+                                <strong>Club:</strong> {{ object.club }}
+                            </div>
+                        {% elif model_name == 'evensocial' %}
+                            <div class="detail-item">
+                                <strong>Price:</strong> {{ object.prix }}
+                            </div>
+                        {% endif %}
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

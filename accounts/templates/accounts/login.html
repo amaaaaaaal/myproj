@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+.custom-card {
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+}
+
+.custom-card .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    padding: 10px 30px;
+}
+
+.custom-card .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.custom-card .form-control {
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 12px;
+}
+
+.custom-card .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.login-form h2 {
+    color: #000000;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.login-form label {
+    color: #000000;
+    font-size: 16px;
+}
+
+.login-form .btn-block {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.text-muted {
+    color: #6c757d;
+    font-size: 14px;
+}
+</style>
+
+<div class="container-fluid">
+    <div class="row justify-content-center align-items-center vh-100">
+        <div class="col-md-4 col-sm-6">
+            <div class="card custom-card">
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-4">Connexion</h2>
+                    <form method="POST" class="login-form">
+                        {% csrf_token %}
+                        <div class="form-group mb-4">
+                            <label for="username">Nom d'utilisateur</label>
+                            <input type="text" id="username" name="username" class="form-control" required>
+                        </div>
+                        <div class="form-group mb-4">
+                            <label for="password">Mot de passe</label>
+                            <input type="password" id="password" name="password" class="form-control" required>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-block mt-4">Connexion</button>
+                        </div>
+                    </form>
+                    <div class="text-center mt-4">
+                        <a href="#" class="text-muted">Mot de passe oublié ?</a>
+                        <span class="mx-2">•</span>
+                        <a href="{% url 'signup' %}" class="text-muted">Créer un compte</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

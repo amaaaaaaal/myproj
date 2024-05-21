@@ -1,0 +1,45 @@
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Ajouter un stage</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-body">
+                    <form method="post" action="{% url 'stage_list' %}" class="row g-3">
+                        {% csrf_token %}
+                        <div class="col-md-12">
+                            <label for="id_typeStg" class="form-label">Type de stage</label>
+                            <select name="type" id="id_typeStg" class="form-select">
+                                <option value="1">Ouvrier</option>
+                                <option value="2">Technicien</option>
+                                <option value="3">PFE</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="id_societe" class="form-label">Société</label>
+                            <input type="text" name="societe" id="id_societe" class="form-control">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="id_duree" class="form-label">Durée</label>
+                            <input type="text" name="duree" id="id_duree" class="form-control">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="id_sujet" class="form-label">Sujet</label>
+                            <input type="text" name="sujet" id="id_sujet" class="form-control">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="id_contactInfo" class="form-label">Contact Information</label>
+                            <input type="text" name="contactInfo" id="id_contactInfo" class="form-control">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="id_specialite" class="form-label">Spécialité</label>
+                            <input type="text" name="specialite" id="id_specialite" class="form-control">
+                        </div>
+                        <div class="col-12 text-center">
+                            <button type="submit" class="btn btn-primary">Ajouter</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

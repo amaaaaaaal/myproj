@@ -1,0 +1,29 @@
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Ajouter un logement</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-body">
+                    <form method="post" action="{% url 'post_list' %}" class="row g-3">
+                        {% csrf_token %}
+                        <div class="col-md-12">
+                            <label for="id_localisation" class="form-label">Localisation</label>
+                            <input type="text" name="localisation" id="id_localisation" class="form-control">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="id_description" class="form-label">Description</label>
+                            <textarea name="description" id="id_description" class="form-control" rows="4"></textarea>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="id_contactInfo" class="form-label">Contact Information</label>
+                            <input type="text" name="contactInfo" id="id_contactInfo" class="form-control">
+                        </div>
+                        <div class="col-12 text-center">
+                            <button type="submit" class="btn btn-primary">Ajouter</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

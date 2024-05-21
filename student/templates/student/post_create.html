@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5" style="padding: 80px;">
+    <h1 class="text-center mb-4">Ajouter une nouvelle publication</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <form method="post" enctype="multipart/form-data" id="post-form" action="{% url 'post_create' %}" class="row g-3">
+                {% csrf_token %}
+                <div class="col-md-6">
+                    <label for="id_type" class="form-label">Type de publication</label>
+                    <select name="type" id="id_type" class="form-select">
+                        <option value="1">Stage</option>
+                        <option value="2">Transport</option>
+                        <option value="3">Logement</option>
+                    </select>
+                </div>
+                <div id="stage-form" class="col-md-12" style="display: none; padding: 10px;">
+                    <div class="card shadow-sm p-3">
+                        {% include 'student/stage_form.html' %}
+                    </div>
+                </div>
+                <div id="transport-form" class="col-md-12" style="display: none; padding: 10px;">
+                    <div class="card shadow-sm p-3">
+                        {% include 'student/transport_form.html' %}
+                    </div>
+                </div>
+                <div id="logement-form" class="col-md-12" style="display: none; padding: 10px;">
+                    <div class="card shadow-sm p-3">
+                        {% include 'student/logement_form.html' %}
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('id_type').addEventListener('change', function() {
+        var selectedType = this.value;
+        var stageForm = document.getElementById('stage-form');
+        var transportForm = document.getElementById('transport-form');
+        var logementForm = document.getElementById('logement-form');
+        
+        stageForm.style.display = 'none';
+        transportForm.style.display = 'none';
+        logementForm.style.display = 'none';
+        
+        if (selectedType === '1') {
+            stageForm.style.display = 'block';
+        } else if (selectedType === '2') {
+            transportForm.style.display = 'block';
+        } else if (selectedType === '3') {
+            logementForm.style.display = 'block';
+        }
+    });
+</script>
+{% endblock %}

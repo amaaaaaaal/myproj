@@ -1,0 +1,37 @@
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Ajouter un transport</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-body">
+                    <form method="post" action="{% url 'transport_list' %}" class="row g-3">
+                        {% csrf_token %}
+                        <div class="col-md-12">
+                            <label for="id_depart" class="form-label">Départ</label>
+                            <input type="text" name="depart" id="id_depart" class="form-control">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="id_destination" class="form-label">Destination</label>
+                            <input type="text" name="destination" id="id_destination" class="form-control">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="id_heuredep" class="form-label">Heure de départ</label>
+                            <input type="time" name="heuredep" id="id_heuredep" class="form-control">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="id_nbresieges" class="form-label">Nombre de sièges</label>
+                            <input type="number" name="nbresieges" id="id_nbresieges" class="form-control">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="id_contactInfo" class="form-label">Contact Information</label>
+                            <input type="text" name="contactInfo" id="id_contactInfo" class="form-control">
+                        </div>
+                        <div class="col-12 text-center">
+                            <button type="submit" class="btn btn-primary">Ajouter</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

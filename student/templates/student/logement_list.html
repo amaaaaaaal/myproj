@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .container {
+        margin-top: 40px;
+    }
+
+    .card {
+        border-radius: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .card-body {
+        padding: 20px;
+        padding-top: 100px;
+    }
+
+    .card-text {
+        font-size: 1rem;
+        color: #555;
+        margin-bottom: 10px;
+    }
+
+    .btn-outline-primary {
+        color: #007bff;
+        border-color: #007bff;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        margin-right: 10px;
+    }
+
+    .btn-outline-primary:hover {
+        background-color: #007bff;
+        color: #ffffff;
+    }
+
+    .list-inline-item {
+        margin-right: 10px;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h1 class="card-title mb-4 text-center fw-bold">Liste des logements</h1>
+                  
+                    {% for logement in object_list %}
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <p class="card-text"><strong>Description:</strong> {{ logement.description }}</p>
+                            <p class="card-text"><strong>Contact Information:</strong> {{ logement.contactInfo }}</p>
+                        </div>
+                        <div class="card-footer bg-white">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-primary">Réserver</button>
+                                    <!-- Add other buttons if needed -->
+                                </div>
+                            </div>
+                            <ul class="list-inline mt-2">
+                                <li class="list-inline-item"><a href="#" class="text-decoration-none text-dark">Likes</a></li>
+                                <li class="list-inline-item"><a href="#" class="text-decoration-none text-dark">Comments</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p class="text-center">Aucun logement trouvé.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
